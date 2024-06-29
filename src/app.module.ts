@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TodoController } from './todo/todo.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TodoService } from './todo/todo.service';
 
 @Module({
   imports: [
@@ -19,6 +20,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
   ],
   controllers: [AppController, TodoController],
-  providers: [AppService],
+  providers: [AppService, TodoService],
 })
 export class AppModule {}
