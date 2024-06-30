@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTodoDto } from './dto/todo.dto';
 import { TodoRepository } from './entities/todo.repository';
+import { TodoEntity } from './entities/todo.entity';
 
 @Injectable()
 export class TodoService {
@@ -12,7 +13,11 @@ export class TodoService {
     return todo;
   }
 
-  async find(){
+  async find() {
     return await this.todoRepository.find();
+  }
+  async findOneByTitle(title: string) {
+    
+    return await this.todoRepository.findOneByTitle(title);
   }
 }

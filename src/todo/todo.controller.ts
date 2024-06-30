@@ -5,10 +5,12 @@ import {
   Get,
   Post,
   Put,
+  Query,
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateTodoDto } from './dto/todo.dto';
 import { TodoService } from './todo.service';
+import { title } from 'process';
 
 @Controller('todo')
 export class TodoController {
@@ -28,7 +30,12 @@ export class TodoController {
   async find() {
     return await this.todoService.find();
   }
-
+  @Get('/by-title')
+  async findOneByTitle(@Query() title: string) {
+    console.log(title);
+    console.log('sad');
+    return await this.todoService.findOneByTitle(title);
+  }
   @Get()
   findOne() {}
 
