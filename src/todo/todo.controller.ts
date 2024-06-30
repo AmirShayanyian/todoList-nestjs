@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Put, ValidationPipe } from '@nestjs/common';
 import { CreateTodoDto } from './dto/todo.dto';
 import { TodoService } from './todo.service';
 
@@ -6,7 +6,7 @@ import { TodoService } from './todo.service';
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
   @Post()
-  async create(createTodoDto: CreateTodoDto) {
+  async create(@Body(new ValidationPipe()) createTodoDto: CreateTodoDto) {
     const todo = await this.todoService.create(createTodoDto);
     return todo;
   }
