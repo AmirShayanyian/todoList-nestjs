@@ -3,7 +3,7 @@ import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
 @Controller('todo')
 export class TodoController {
     @Post()
-    createTodo(){}
+    create(){}
 
     @Get()
     find(){}
