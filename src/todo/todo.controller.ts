@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Post,
   Put,
   Query,
@@ -36,8 +37,10 @@ export class TodoController {
     console.log('sad');
     return await this.todoService.findOneByTitle(title);
   }
-  @Get()
-  findOne() {}
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.todoService.findOne(+id);
+  }
 
   @Put()
   updateOne() {}

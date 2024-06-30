@@ -1,4 +1,4 @@
-import { FindOptionsWhere, Repository } from 'typeorm';
+import { Equal, FindOptionsWhere, Repository } from 'typeorm';
 import { TodoEntity } from './todo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
@@ -15,10 +15,9 @@ export class TodoRepository extends Repository<TodoEntity> {
   }
   async findOneByTitle(title: string) {
     let where: FindOptionsWhere<TodoEntity> = {};
-    where['title'] = title;
-    console.log(title);
+    where['title'] = Equal(title);
     const todo = await this.todoRepository.find({
-      where: { title },
+      where,
     });
     console.log(todo);
     return todo;

@@ -17,7 +17,12 @@ export class TodoService {
     return await this.todoRepository.find();
   }
   async findOneByTitle(title: string) {
-    
     return await this.todoRepository.findOneByTitle(title);
+  }
+
+  async findOne(id: number) {
+    const todo = await this.todoRepository.findOneBy({ id });
+    if (todo) return todo;
+    throw new Error('Todo not found');
   }
 }
