@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoService } from './todo.service';
+import { UpdateTodoDto } from './dto/udpate-todo.dto';
 
 @Controller('todo')
 export class TodoController {
@@ -42,7 +43,18 @@ export class TodoController {
   }
 
   @Put(':id')
-  updateOne(@Param('id')id:string,@Body() ) {}
+  async updateOne(
+    @Param('id') id: string,
+    @Body() updateTodoDto: UpdateTodoDto
+  ) {
+    const { title, description, priority } = updateTodoDto;
+    const result = await this.todoService.updateOne(+id, {
+      title,
+      description,
+      priority,
+    });
+    return result;
+  }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {

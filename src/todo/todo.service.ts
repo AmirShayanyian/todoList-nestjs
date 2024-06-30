@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoRepository } from './entities/todo.repository';
 import { TodoEntity } from './entities/todo.entity';
+import { UpdateTodoDto } from './dto/udpate-todo.dto';
 
 @Injectable()
 export class TodoService {
@@ -25,6 +26,15 @@ export class TodoService {
     if (todo) return todo;
     throw new Error('Todo not found');
   }
+  async updateOne(id: number, updateTodoDto: UpdateTodoDto) {
+    const { title, description, priority } = updateTodoDto;
+    const result = await this.todoRepository.update(
+      { id },
+      { title, description, priority }
+    );
+    return result;
+  }
+
   async deleteOne(id: number) {
     return await this.todoRepository.delete({ id });
   }
