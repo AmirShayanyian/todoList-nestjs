@@ -11,4 +11,8 @@ export class TodoService {
     await this.todoRepository.save(todo);
     return todo;
   }
+
+  async find(){
+    return await this.todoRepository.find();
+  }
 }

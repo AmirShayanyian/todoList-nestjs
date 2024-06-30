@@ -25,7 +25,9 @@ export class TodoController {
   }
 
   @Get()
-  find() {}
+  async find() {
+    return await this.todoService.find();
+  }
 
   @Get()
   findOne() {}
