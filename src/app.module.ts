@@ -16,7 +16,7 @@ import { TodoModule } from './todo/todo.module';
       password: '',
       database: 'todoapp',
       autoLoadEntities: true,
-      entities: [],
+      entities: ['dist/**/**/*.entity.{.ts,.js}'],
       synchronize: true,
     }),
     TodoModule,

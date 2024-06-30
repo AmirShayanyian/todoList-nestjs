@@ -5,18 +5,18 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('Todo')
+@Entity('todo')
 export class TodoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar', { length: 50 })
+  @Column('varchar', { length: 50 ,default:'some title'})
   title: string;
 
-  @Column('varchar', { length: 250 })
+  @Column('varchar', { length: 250,default:'some description' })
   description: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true ,default:'High'})
   priority: string;
 
   @CreateDateColumn()
