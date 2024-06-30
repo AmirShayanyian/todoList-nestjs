@@ -1,5 +1,5 @@
 import { Equal, FindOptionsWhere, Repository } from 'typeorm';
-import { TodoEntity } from './create-todo.entity';
+import { TodoEntity } from './todo.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 export class TodoRepository extends Repository<TodoEntity> {

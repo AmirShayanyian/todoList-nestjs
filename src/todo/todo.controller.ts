@@ -9,9 +9,8 @@ import {
   Query,
   ValidationPipe,
 } from '@nestjs/common';
-import { CreateTodoDto } from './dto/todo.dto';
+import { CreateTodoDto } from './dto/create-todo.dto';
 import { TodoService } from './todo.service';
-import { title } from 'process';
 
 @Controller('todo')
 export class TodoController {
@@ -42,8 +41,8 @@ export class TodoController {
     return await this.todoService.findOne(+id);
   }
 
-  @Put()
-  updateOne() {}
+  @Put(':id')
+  updateOne(@Param('id')id:string,@Body() ) {}
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
