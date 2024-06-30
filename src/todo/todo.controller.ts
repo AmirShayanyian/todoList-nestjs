@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Post, Put, ValidationPipe } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  ValidationPipe,
+} from '@nestjs/common';
 import { CreateTodoDto } from './dto/todo.dto';
 import { TodoService } from './todo.service';
 
@@ -7,7 +15,12 @@ export class TodoController {
   constructor(private readonly todoService: TodoService) {}
   @Post()
   async create(@Body(new ValidationPipe()) createTodoDto: CreateTodoDto) {
-    const todo = await this.todoService.create(createTodoDto);
+    const { title, description, priority } = createTodoDto;
+    const todo = await this.todoService.create({
+      title,
+      description,
+      priority,
+    });
     return todo;
   }
 

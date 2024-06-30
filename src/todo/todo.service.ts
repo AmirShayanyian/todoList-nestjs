@@ -6,7 +6,8 @@ import { TodoRepository } from './entities/todo.repository';
 export class TodoService {
   constructor(private readonly todoRepository: TodoRepository) {}
   async create(createTodoDto: CreateTodoDto) {
-    const todo = this.todoRepository.create(createTodoDto);
+    const { title, description, priority } = createTodoDto;
+    const todo = this.todoRepository.create({ title, description, priority });
     await this.todoRepository.save(todo);
     return todo;
   }
