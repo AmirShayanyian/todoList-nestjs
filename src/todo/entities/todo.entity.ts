@@ -10,13 +10,13 @@ export class TodoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column('varchar', { length: 50 })
   title: string;
 
-  @Column()
+  @Column('varchar', { length: 250 })
   description: string;
 
-  @Column()
+  @Column({ nullable: true })
   priority: string;
 
   @CreateDateColumn()
