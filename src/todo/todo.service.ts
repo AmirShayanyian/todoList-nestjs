@@ -25,4 +25,7 @@ export class TodoService {
     if (todo) return todo;
     throw new Error('Todo not found');
   }
+  async deleteOne(id: number) {
+    return await this.todoRepository.delete({ id });
+  }
 }

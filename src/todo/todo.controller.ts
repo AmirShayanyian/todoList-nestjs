@@ -45,6 +45,8 @@ export class TodoController {
   @Put()
   updateOne() {}
 
-  @Delete()
-  remove() {}
+  @Delete(':id')
+  async remove(@Param('id') id: string) {
+    return await this.todoService.deleteOne(+id);
+  }
 }
